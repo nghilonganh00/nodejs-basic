@@ -12,15 +12,11 @@
     <h1>Hello world</h1>
     <div class="topnav">
         <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a href="/upload">Update-file</a>
+        
     </div>
 
-    <div style="padding-left:16px">
-        <h2>Top Navigation Example</h2>
-        <p>Some content..</p>
-    </div>
+    
     <div>
         <div class="w3-container">
             <h2>List users:</h2>
@@ -42,8 +38,15 @@
                             <td><%= dataUser[i].lastName %></td>
                             <td>
                                 <a href="/detail/user/<%= dataUser[i].id %>" target="_blank">Detail</a>
-                                <button>Edit</button>
-                                <button>Del</button>
+
+                                 <form action="/edit-user/<%= dataUser[i].id %>" method="GET">
+                                    <button type="submit">Edit</button>
+                                </form>
+
+                                <form action="/delete-user" method="POST">
+                                    <input type="text" hidden value="<%= dataUser[i].id %>" name="userId" />
+                                    <button type="submit">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     <% } %>
